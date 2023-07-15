@@ -1,0 +1,91 @@
+site_name: earthaccess
+site_description: Client library for NASA Earthdata APIs
+site_url: https://github.com/nsidc/earthaccess
+
+theme:
+  name: 'material'
+  logo: earth.png
+  favicon: earth.png
+  palette:
+    - scheme: default
+      primary: teal
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to dark mode
+    - scheme: slate
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to light mode
+
+repo_name: nsidc/earthaccess
+repo_url: https://github.com/nsidc/earthaccess
+edit_uri: ''
+
+extra_css:
+  - css/styles.css
+
+plugins:
+  - search
+  - mkdocstrings:
+      default_handler: python
+      handlers:
+        python:
+          options:
+            docstring_style: google
+            docstring_options:
+              ignore_init_summary: no
+            merge_init_into_class: yes
+            show_submodules: no
+          rendering:
+            show_root_heading: false
+            show_source: false
+  - mkdocs-jupyter:
+      execute: True
+
+nav:
+  - OVERVIEW: 'index.md'
+  - TUTORIALS:
+      - 'Introducing NASA earthaccess': 'tutorials/demo.ipynb'
+      - 'Search and access restricted datasets': 'tutorials/restricted-datasets.ipynb'
+  - HOW-TO:
+      - 'Authenticate with Earthdata Login': 'tutorials/authenticate.md'
+      - 'Search data collections using filters': 'tutorials/search-collections.md'
+      - 'Search for granules within a collection using filters': 'tutorials/search-granules.md'
+      - 'Determine if a collection is on-prem or in the cloud': 'tutorials/storage-location.md'
+      - 'Download data from on-prem location': 'tutorials/onprem.md'
+      - 'Direct S3 access - Open/stream files in the cloud': 'tutorials/cloud.md'
+  - USER REFERENCE:
+      - API:
+          - 'Search and Access': 'user-reference/api/api.md'
+      - Modules:
+        - Collections:
+            - 'Collection Queries': 'user-reference/collections/collections-query.md'
+            - 'Collection Results': 'user-reference/collections/collections.md'
+        - Granules:
+            - 'Granule Queries': 'user-reference/granules/granules-query.md'
+            - 'Granule Results': 'user-reference/granules/granules.md'
+        - Store:
+            - 'Store': 'user-reference/store/store.md'
+        - Auth:
+            - 'Auth': 'user-reference/auth/auth.md'
+      - Glossary:
+          - 'NASA Glossary': 'user-reference/glossary/nasa-glossary.md'
+          - 'Cloud Computing Terminology': 'user-reference/glossary/cloud-glossary.md'
+
+markdown_extensions:
+  - admonition
+  - callouts
+  - pymdownx.details
+  - meta
+  - toc:
+      toc_depth: 2
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+
+watch:
+  - docs
+  - earthaccess
+  - notebooks
